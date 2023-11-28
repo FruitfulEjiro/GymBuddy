@@ -12,10 +12,12 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+// app.use('/public', express.static('public', { 'Content-Type': 'text/css' }));
+// app.use(express.static(__dirname + "/public"));
 
 //connect to database: replace <username> and <password> with you username and password
 const MONGODB_URI =
-  "mongodb+srv://<username>:<password>@cluster0.l2dqcyl.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://gymbuddyapp:gymbuddyapp@cluster0.g9nahzi.mongodb.net/?retryWrites=true&w=majority";
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
