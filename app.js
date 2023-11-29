@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 //connect to database: replace <username> and <password> with you username and password
 const MONGODB_URI =
-  "mongodb+srv://<username>:<password>@cluster0.g9nahzi.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://gymbuddy:gymbuddyapp@cluster0.g9nahzi.mongodb.net/?retryWrites=true&w=majority";
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -65,7 +65,11 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("loginsignup");
+  res.render("signin");
+});
+
+app.get("/signup", (req, res) => {
+  res.render("signin");
 });
 
 app.get("/success", (req, res) => {
