@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const User = require("./models/userModel");
+require("dotenv").config();
+const connectDB = require("./config/DB");
 
 const PORT = 5001;
 const app = express();
@@ -14,18 +16,10 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 //connect to database: replace <username> and <password> with you username and password
-const MONGODB_URI =
-  "mongodb+srv://<username>:<password>@cluster0.sn4b3rz.mongodb.net/?retryWrites=true&w=majority";
-mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("Connected to the database");
-  })
-  .catch((err) => {
-    console.log(err);
-    console.log("cant connect to Database");
-  });
-
+MONGODB_URI =
+     process.env.string;
+     console.log(process.env.string);
+connectDB();
 
 app.post("/", async (req, res) => {
   var userName = req.body.username;
