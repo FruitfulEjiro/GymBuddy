@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- To include a partial file called header.ejs -->
+    <%-include('../partials/header.ejs') %>
+
+    <!-- the main part whhere you code -->
+    <main>
+      <!-- the reason why percentage sign(%) is being added is cuz the language in that line of code is javascrip -->
+      <!-- but if is html code we dont need to add the percentage sign cuz ejs reads html very well. -->
+      <ul>
+        <!-- For each of the student you want to get the database -->
+        <% students.forEach((student) =>{ %>
+        <li>
+          <!-- to get the name of the student in the datebase -->
+          <a href=""><%= student.name %></a>
+          <!-- to include the email in the datebase -->
+          <h3>with emial address <%= student.email %></h3>
+        </li>
+        <% }) %>
+      </ul>
+    </main>
+
+    <!-- to include the footer file -->
+    <%-include('../partials/footer.ejs') %>
+  </body>
+</html>
